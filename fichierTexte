@@ -1,0 +1,45 @@
+Schéma de la Base de Données et Fonctionnalités
+1. Introduction
+Le projet consiste à concevoir une application web de gestion de voyages pour une agence, afin de moderniser les processus de réservation et de gestion des activités touristiques. Cette solution numérique permettra :
+
+De gérer les clients inscrits.
+D’afficher dynamiquement les offres disponibles (vols, hôtels, circuits touristiques).
+De permettre aux utilisateurs de réserver des activités et de personnaliser leurs choix.
+Ce document explique la conception du schéma ERD, la modélisation des tables, les scripts SQL, et les fonctionnalités PHP.
+
+2. Schéma de la Base de Données (ERD)
+2.1. Entités principales
+Clients : Représente les utilisateurs qui réservent des activités via le site.
+
+Attributs : id_client, nom, email, mot_de_passe, telephone.
+Activités : Regroupe les offres touristiques (vols, hôtels, excursions, etc.).
+
+Attributs : id_activite, nom_activite, description, prix, categorie, disponibilite.
+Réservations : Stocke les réservations effectuées par les clients pour une activité donnée.
+
+Attributs : id_reservation, id_client, id_activite, date_reservation, nombre_personnes, prix_total.
+Catégories : Permet de classer les activités (par exemple, vol, hôtel, excursion).
+
+Attributs : id_categorie, nom_categorie.
+2.2. Relations entre les entités
+Clients ↔ Réservations : Un client peut effectuer plusieurs réservations (relation 1:N).
+Activités ↔ Réservations : Une activité peut être réservée plusieurs fois par différents clients (relation 1:N).
+Catégories ↔ Activités : Une catégorie regroupe plusieurs activités (relation 1:N).
+3. Analyse des besoins fonctionnels
+Basé sur ce modèle, voici les besoins fonctionnels identifiés :
+
+Gestion des clients :
+
+Ajouter un client via un formulaire d’inscription.
+
+Gestion des activités :
+
+Afficher les activités.
+Ajouter ou modifier des activités via un formulaire administratif.
+Supprimer une activité.
+Gestion des réservations :
+
+Permettre aux clients de réserver une activité.
+Calculer le prix total en fonction du nombre de personnes.
+Lister les réservations par client ou par activité.
+Supprimer ou modifier une réservation.

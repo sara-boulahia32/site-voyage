@@ -40,3 +40,29 @@ button {
     cursor: pointer;
 }
 
+    #carousel-slides {
+        display: flex;
+        transform: translateX(0%);
+    }
+
+
+    .carousel-item {
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .carousel-item.active {
+        opacity: 1;
+    }
+    
+    .carousel-item:not(.active) {
+        opacity: 0;
+        display: none;
+    }
+
+
+.font-bebas{
+            font-family: "Bebas Neue", serif;
+        }
+        .textlarge{
+            font-size: 80px;
+        }

@@ -12,13 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <style>
-        .font-bebas{
+ .font-bebas{
             font-family: "Bebas Neue", serif;
         }
         .textlarge{
             font-size: 80px;
         }
     </style>
+    
 </head>
 <body class="bg-[url('img/luca-bravo-O453M2Liufs-unsplash.jpg')] bg-no-repeat bg-center  h-screen ml-[100px]">
 
@@ -76,6 +77,8 @@
         <p>Réservez facilement vos activités préférées en ligne.</p>
         <button class="font-bebas w-[180px] text-black text-lg bg-emerald-700  rounded-3xl p-2 px-2">Découvrez plus</button>
 </div>
+
+
 
     <script src="./script.js"></script>
 </body>

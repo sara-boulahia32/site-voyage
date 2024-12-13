@@ -51,9 +51,10 @@ if (mysqli_num_rows($result) == 0) {
           </button>
       </div>
             <div class="hidden font-bebas lg:flex space-x-8">
-                <div>
+               
                 <a href="index.php" class="font-bold text-white lg:text-lg p-2 hover:font-bold">Acceuil</a>
-                <hr class="border-t-4 border-emerald-700 opacity-80 w-20 "></div><a href="activites.php" class="font-semibold text-white lg:text-lg p-2 hover:font-bold">Activités</a>
+                
+                <div><a href="activites.php" class="font-semibold text-white lg:text-lg p-2 hover:font-bold">Activités</a><hr class="border-t-4 border-emerald-700 opacity-80 w-20 "></div>
                 <a href="reservations.php" class="font-semibold text-white lg:text-lg p-2 hover:font-bold">Mes Réservations</a>
                 <a href="login.php" class="font-semibold text-white lg:text-lg p-2 hover:font-bold">Se Connecter</a>
                 
@@ -82,17 +83,79 @@ if (mysqli_num_rows($result) == 0) {
           <div><a href="#" class="font-semibold text-white hover:bg-[#F7E0A1] hover:rounded-lg hover:py-2 hover:px-3 hover:shadow-2xl hover:scale-105 transition hover:text-[#7F000F]">Sign in</a></div>
       </div>
       </div>
+      <div class="text-center mt-8">
+    <button id="show-form-btn" class="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-600">
+        Ajouter une Activité
+    </button>
+</div>
 
-    <main class="flex space-x-4">
-        <?php while ($activite = mysqli_fetch_assoc($result)): ?>
-            <div class="bg-white mt-8 p-2 rounded-xl">
-                <h1><?= htmlspecialchars($activite['titre']) ?></h1>
-                <p><?= htmlspecialchars($activite['description']) ?></p>
-                <p>Prix : <?= htmlspecialchars($activite['prix']) ?> €</p>
-                <a class="border rounded-lg py-2 " href="reserver.php?id=<?= $activite['id_activite'] ?>">Réserver</a>
+<div id="form-container" class=" bg-white p-6 shadow-lg rounded-lg mt-8 max-w-md mx-auto">
+
+    <form action="ajouter_activiter.php" method="POST">
+        
+        <div class="mb-4">
+            <label for="titre" class="block text-gray-700 font-bold mb-2">Titre :</label>
+            <input type="text" id="titre" name="titre" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 font-bold mb-2">Description :</label>
+            <textarea id="description" name="description" rows="4" required class="w-full px-4 py-2 border rounded-lg"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700 font-bold mb-2">Destination :</label>
+            <input type="text" name="destination" rows="4" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label for="prix" class="block text-gray-700 font-bold mb-2">Prix (€) :</label>
+            <input type="number" id="prix" name="prix" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label for="prix" class="block text-gray-700 font-bold mb-2">Date de début :</label>
+            <input type="date" name="date_debut" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label for="prix" class="block text-gray-700 font-bold mb-2">Date de fin:</label>
+            <input type="date" name="date_fin" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <div class="mb-4">
+            <label for="prix" class="block text-gray-700 font-bold mb-2">Places disponibles:</label>
+            <input type="number" name="places_disponibles" required class="w-full px-4 py-2 border rounded-lg">
+        </div>
+        <button type="submit" class="px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-600">
+            Ajouter
+        </button>
+    </form>
+</div>
+
+
+      <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-4">
+    <?php while ($activite = mysqli_fetch_assoc($result)): ?>
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <!-- <img src="img/activites/<?= htmlspecialchars($activite['image']) ?>" alt="<?= htmlspecialchars($activite['titre']) ?>" class="w-full h-48 object-cover"> -->
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-2"><?= htmlspecialchars($activite['titre']) ?></h2>
+                <p class="text-gray-700 mb-4"><?= htmlspecialchars($activite['description']) ?></p>
+                <p class="text-gray-700 mb-4">Destination : <?= htmlspecialchars($activite['destination'] ?? '') ?></p>
+                <p class="text-green-600 font-semibold">Prix : <?= htmlspecialchars($activite['prix'] ?? '') ?> €</p>
+                <p class="text-green-600 font-semibold">Date de début : <?= htmlspecialchars($activite['date_debut'] ?? '') ?></p>
+                <p class="text-green-600 font-semibold">Date de fin : <?= htmlspecialchars($activite['date_fin'] ?? '') ?></p>
+                <p class="text-green-600 font-semibold">Places disponibles : <?= htmlspecialchars($activite['places_disponibles']?? '') ?></p>
+                <div class="flex justify-between">
+                <a href="reserver.php?id=<?= $activite['id_activite'] ?>" class="inline-block mt-4 px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-600">Réserver</a>
+                
+                            <a class="content-center" href="modifierClient.php?id_client=<?php echo $data["id_client"]; ?>">Edit</a>
+                            <a class="content-center" href="supprimerClient.php?id_client=<?php echo $data["id_client"]; ?>">🗑️</a>
+
+
+
+
+                                                        </div>
+                        
             </div>
-        <?php endwhile; ?>
-    </main>
+        </div>
+    <?php endwhile; ?>
+</main>
+
     <script src="script.js"></script>
 </body>
 </html>

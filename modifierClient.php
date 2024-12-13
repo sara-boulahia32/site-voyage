@@ -1,0 +1,30 @@
+<?php
+include('config.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = mysqli_real_escape_string($conn, $_POST['id_client']);
+    $nom = mysqli_real_escape_string($conn, $_POST['nom']);
+    $prenom = mysqli_real_escape_string($conn, $_POST['prenom']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $telephone = mysqli_real_escape_string($conn, $_POST['telephone']);
+    $adresse = mysqli_real_escape_string($conn, $_POST['adresse']);
+    $date = mysqli_real_escape_string($conn, $_POST['date']);
+    $mot_de_passe = mysqli_real_escape_string($conn, $_POST['mot_de_passe']);
+   
+
+    $sql = "UPDATE clients SET 
+    nom = '$nom', 
+    prenom = '$prenom', 
+    email = '$email', 
+    telephone = '$telephone', 
+    adresse = '$adresse', 
+    date_naissance = '$date' 
+    WHERE id_client = '$id'";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Client modifié avec succès !'); window.location.href='client.php';</script>";
+    } else {
+        echo "Erreur : " . mysqli_error($conn);
+    }
+}
+?>

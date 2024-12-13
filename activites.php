@@ -143,7 +143,7 @@ if (mysqli_num_rows($result) == 0) {
                 <div class="flex justify-between">
                 <a href="reserver.php?id=<?= $activite['id_activite'] ?>" class="inline-block mt-4 px-4 py-2 bg-emerald-700 text-white rounded-lg hover:bg-emerald-600">Réserver</a>
                 
-                            <a class="content-center" href="modifierClient.php?id_client=<?php echo $data["id_client"]; ?>">Edit</a>
+                            
                             <a class="content-center" href="supprimerClient.php?id_client=<?php echo $data["id_client"]; ?>">🗑️</a>
 
 

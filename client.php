@@ -51,7 +51,8 @@ $query = "SELECT * FROM clients";
                 
                 <div class="flex space-x-4 pt-2 text-white">
                     <a href="#" class="text-white w-[20px] h-[20px]">
-                    <img src="./img/User.png" alt="user logo">
+                    <a href="client.php">
+                    <img src="./img/User.png" alt="user logo"></a>
                 </a>
                 <a href="#"><i class='bx bxl-facebook-circle'></i></a>
                     <a href="#"><i class='bx bxl-pinterest'></i></a>
@@ -123,18 +124,18 @@ $query = "SELECT * FROM clients";
 </div>
     <main>
         <?php if (mysqli_num_rows($result) > 0): ?>
-            <table class="w-full text-left table-auto">
-                <thead>
-                <tr>
-                        <th class="px-2 md:px-6 py-3"> </th>
-                        <th class="px-2 md:px-6 py-3">Identifiant</th>
-                        <th class="px-2 md:px-6 py-3">Nom</th>
-                        <th class="px-2 md:px-6 py-3">Prenom</th>
-                        <th class="px-2 md:px-6 py-3">Email</th>
-                        <th class="px-2 md:px-6 py-3">Telephone</th>
-                        <th class="px-2 md:px-6 py-3">Adresse</th>
-                        <th class="px-2 md:px-6 py-3">Date de naissance</th>
-                        <th class="px-2 md:px-6 py-3">Mot de passe</th>
+            <table class="w-full text-left table-fixed">
+                <thead >
+                <tr class="overflow-x-auto">
+                        <th class="px-2 md:px-6 py-3 "> </th>
+                        <th class="px-2 md:px-6 py-3 truncate">Identifiant</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Nom</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Prenom</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Email</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Telephone</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Adresse</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Date de naissance</th>
+                        <th class="px-2 md:px-6 py-3 truncate">Mot de passe</th>
 
                     </tr>
                 </thead>
@@ -143,17 +144,16 @@ $query = "SELECT * FROM clients";
                         <tr class="border-b">
                             <td class="px-2 md:px-6 py-3 flex space-x-2">
                             
-                            <a  href="supprimerClient.php?id_client=<?php echo $data["id_client"]; ?>">🗑️</a>
-                            <a href="modifierClient.php?id_client=<?php echo $data["id_client"]; ?>">Edit</a>
+                            <a  href="supprimerClient.php?id_client=<?php echo $reservation["id_client"]; ?>">🗑️</a>
                         </td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['id_client']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['nom']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['prenom']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['email']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['telephone']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['adresse']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['date_naissance']) ?></td>
-                            <td class="px-2 md:px-6 py-3"><?= htmlspecialchars($reservation['mot_de_passe']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['id_client']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['nom']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['prenom']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['email']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['telephone']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['adresse']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['date_naissance']) ?></td>
+                            <td class="px-2 md:px-6 py-3 truncate"><?= htmlspecialchars($reservation['mot_de_passe']) ?></td>
                             
                             
                     </td>   

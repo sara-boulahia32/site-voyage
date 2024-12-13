@@ -72,7 +72,8 @@ $activite = mysqli_fetch_assoc($result);
                 
                 <div class="flex space-x-4 pt-2 text-white">
                     <a href="#" class="text-white w-[20px] h-[20px]">
-                    <img src="./img/User.png" alt="user logo">
+                    <a href="client.php">
+                    <img src="./img/User.png" alt="user logo"></a>
                 </a>
                 <a href="#"><i class='bx bxl-facebook-circle'></i></a>
                     <a href="#"><i class='bx bxl-pinterest'></i></a>

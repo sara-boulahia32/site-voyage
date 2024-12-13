@@ -2,7 +2,8 @@
 
 include "config.php";
 
-$ID = intval($_GET["client_id"]);
+$ID = intval($_GET["id_client"]);
+
 $sql = "DELETE FROM clients WHERE id_client = $ID";
 
 if (mysqli_query($conn, $sql)) {
